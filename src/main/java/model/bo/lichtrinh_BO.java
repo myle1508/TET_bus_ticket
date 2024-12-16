@@ -38,4 +38,13 @@ public class lichtrinh_BO {
 	{
 		return lichtrinh_DAO.getAlltuyenduong();
 	}
+	public ArrayList<lichtrinh> get_lich_trinh_by_ma_tuyen_duong_trang_thai(int ma_tuyen_duong){
+		ArrayList<lichtrinh> resultList = new ArrayList<lichtrinh>();
+		ArrayList<lichtrinh> lichTrinhList = this.get_lich_trinh_by_ma_tuyen_duong(ma_tuyen_duong);
+		for (lichtrinh lichTrinh : lichTrinhList) {
+			if (lichTrinh.get_trang_thai())
+				resultList.add(lichTrinh);
+		}
+		return resultList;
+	}
 }

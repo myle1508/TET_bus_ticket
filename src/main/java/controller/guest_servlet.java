@@ -37,13 +37,13 @@ public class guest_servlet extends HttpServlet{
  			String diemketthuc = request.getParameter("diem-den");
  			String ngaydi = request.getParameter("ngay-di");
 
- 			tuyenduong tuyenDuong =  tuyenduongBO.getTuyenDuongByDiemDenDiemDi(diemxuatphat.toLowerCase(), diemketthuc.toLowerCase());
+ 			
  			ArrayList<lichtrinh> lichTrinhListTemp = new ArrayList<lichtrinh>();
 	 		ArrayList<lichtrinh> lichTrinhList = new ArrayList<lichtrinh>();
-	 		
+	 		tuyenduong tuyenDuong = (diemketthuc != null) ? tuyenduongBO.getTuyenDuongByDiemDenDiemDi(diemxuatphat.toLowerCase(), diemketthuc.toLowerCase()): tuyenduongBO.getTuyenDuongByDiemDen(diemxuatphat.toLowerCase());
  			if (tuyenDuong != null) {
- 	 			lichTrinhListTemp = lichtrinhBO.get_lich_trinh_by_ma_tuyen_duong(tuyenDuong.get_ma_tuyen_duong());
- 	 			if (!ngaydi.isEmpty()) {
+ 	 			lichTrinhListTemp = lichtrinhBO.get_lich_trinh_by_ma_tuyen_duong_trang_thai(tuyenDuong.get_ma_tuyen_duong());
+ 	 			if (ngaydi != null  && !ngaydi.isEmpty()) {
  	 				for(lichtrinh lichTrinh : lichTrinhListTemp) {
  	 					LocalDateTime localDateTime = lichTrinh.get_thoi_gian_xuat_phat().toLocalDateTime();
  	 					// Tách ngày

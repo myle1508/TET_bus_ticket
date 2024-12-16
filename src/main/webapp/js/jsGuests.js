@@ -12,10 +12,29 @@ const provinces = [
     "TP. Hồ Chí Minh", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái"
 ];
 
+function removeAccentsBeforeSubmit() {
+    // Lấy tất cả các input cần xử lý
+    const inputsToNormalize = ["diem-di", "diem-den"];
+    
+    // Duyệt qua từng input và loại bỏ dấu
+    inputsToNormalize.forEach(inputId => {
+        const inputElement = document.getElementById(inputId);
+        if (inputElement) {
+            inputElement.value = removeAccents(inputElement.value);
+        }
+    });
+}
+
 // Hàm loại bỏ dấu tiếng Việt
 function removeAccents(str) {
-    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/đ/g, "d").replace(/Đ/g, "D");
+    return str
+        .normalize("NFD") // Chuẩn hóa chuỗi thành dạng NFD để phân tách ký tự và dấu
+        .replace(/[\u0300-\u036f]/g, "") // Loại bỏ các dấu
+        .replace(/đ/g, "d") // Chuyển đ thành d
+        .replace(/Đ/g, "D"); // Chuyển Đ thành D
 }
+
+
 
 // Hàm xử lý autocomplete
 function handleAutocomplete(inputId, suggestionsId) {
@@ -46,6 +65,7 @@ function handleAutocomplete(inputId, suggestionsId) {
         }
     });
 }
+
 
 // Gọi hàm xử lý autocomplete cho Điểm đi và Điểm đến
 handleAutocomplete("diem-di", "suggestions-diem-di");

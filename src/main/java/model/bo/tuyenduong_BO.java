@@ -48,4 +48,14 @@ public class tuyenduong_BO {
 		}
 		return null;
 	}
+	public tuyenduong getTuyenDuongByDiemDen(String diemDen) {
+		ArrayList<tuyenduong> tuyenDuongList = this.getList();
+		for(tuyenduong tuyenDuong: tuyenDuongList) {
+			String diemxuatphat = tuyenDuong.get_diem_xuat_phat().toLowerCase();
+			if (diemxuatphat.contains(diemDen) || diemDen.contains(diemxuatphat)) {
+				return tuyenDuong;
+			}
+		}
+		return null;
+	}
 }

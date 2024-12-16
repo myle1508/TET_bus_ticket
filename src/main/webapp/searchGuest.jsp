@@ -23,7 +23,7 @@
         <div class="container-fluid bg-primary mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
             <div class="container">
                 <div class="row g-2">
-                	<form name="form1" action="guest_servlet" method="GET">
+                	<form name="form1" action="guest_servlet" method="GET" onsubmit="removeAccentsBeforeSubmit()">
                     <div class="col-md-12">
                         <div class="row g-2">
                             <div class="col-md-4">
@@ -135,7 +135,7 @@
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
-
+	
 	<%@ include file ="scriptsIncludeGuest.jsp"%>
 </body>
 
