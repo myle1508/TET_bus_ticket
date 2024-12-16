@@ -296,6 +296,7 @@ public class admin_servlet extends HttpServlet {
 	private void handleView(HttpServletRequest request, HttpServletResponse response, ve_BO ve_BO) throws ServletException, IOException {
 	    int ma_ve =Integer.parseInt(request.getParameter("ma_ve")) ;	    
 		ve ve = ve_BO.get_ve_By_ma_ve(ma_ve);
+		System.out.println(ma_ve);
 		nguoidung nguoidung = nguoidung_BO.get_nguoi_dung_By_ma_nguoi_dung(ve.get_ma_nguoi_dung());
 		lichtrinh lichtrinh = lichtrinh_BO.get_lich_trinh_by_ma_lich_trinh(ve.get_ma_lich_trinh());
 		tuyenduong tuyenduong = tuyenduong_BO.get_tuyen_duong_By_ma_tuyen_duong(lichtrinh.get_ma_tuyen_duong());
