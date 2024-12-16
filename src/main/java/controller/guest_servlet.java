@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import model.bean.lichtrinh;
 import model.bean.tuyenduong;
+import model.bean.ve;
 import model.bo.lichtrinh_BO;
 import model.bo.tuyenduong_BO;
 @WebServlet("/guest_servlet")
@@ -76,15 +77,46 @@ public class guest_servlet extends HttpServlet{
  	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
  		lichtrinh_BO lichtrinhBO = new lichtrinh_BO();
  		tuyenduong_BO tuyenduongBO = new tuyenduong_BO();
- 		HttpSession session = request.getSession(false); 
+ 	 
  		if (request.getParameter("submitForm") != null ) {
  			if (request.getParameter("submitForm").equals("payForm")) {
- 				String malichtrinh = request.getParameter("malichtrinh");
- 				String soluongghe = request.getParameter("soluongghe_hidden");
- 				String soghe = request.getParameter("soghe_hidden");
-// 				String[] numbers = soghe.split(",\\s*");
+ 				int malichtrinh = Integer.parseInt(request.getParameter("malichtrinh"));
+ 				lichtrinh lichTrinh = lichtrinhBO.get_lich_trinh_by_ma_lich_trinh(malichtrinh);
+ 				
+ 				int soluongghe = Integer.parseInt(request.getParameter("soluongghe_hidden")) ;
+ 				String vitrighe = request.getParameter("soghe_hidden");
+ 				int tongtien = Integer.parseInt(request.getParameter("tongtien_hidden"));
+ 				ve ve = new ve();
+ 				ve.set_so_ghe(soluongghe); ve.set_vi_tri_ghe(vitrighe); ve.set_tong_tien(tongtien);
+ 				
+ 				HttpSession session = prepareSession(request);
+ 				
+ 				// Cập nhật dữ liệu vào session
+ 		        session.setAttribute("ve", ve);
+ 		        session.setAttribute("lichTrinh", lichTrinh);
+
+ 		        // Kiểm tra nếu session mới được tạo (người dùng chưa đăng nhập)
+ 		        if (session.isNew() || session.getAttribute("ma_nguoi_dung") == null) {
+ 		            response.sendRedirect("login.jsp");
+ 		            return; // Kết thúc xử lý
+ 		        }
+ 		        
+ 		        // Trường hợp người dùng đã đăng nhập, tiếp tục xử lý logic khác
+ 		        // Ví dụ: Chuyển sang trang thanh toán
+ 		        response.sendRedirect("thanhtoan.jsp");
+ 		        
  				
  			}
  		}
+ 	}
+ 	private HttpSession prepareSession(HttpServletRequest request) {
+ 	    HttpSession session = request.getSession(false);
+ 	    if (session == null || session.getAttribute("ma_nguoi_dung") == null) {
+ 	        if (session != null) {
+ 	            session.invalidate();
+ 	        }
+ 	        session = request.getSession(); // Tạo session mới
+ 	    }
+ 	    return session;
  	}
 }

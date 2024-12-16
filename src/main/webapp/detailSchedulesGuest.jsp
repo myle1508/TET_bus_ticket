@@ -156,6 +156,7 @@
 	                  						<input type="text" name="malichtrinh" value="<%= lichTrinh.get_ma_lich_trinh() %>" hidden>
 	                  						<input type="hidden" id="soluongghe_hidden" name="soluongghe_hidden">
 	                  						<input type="hidden" id="soghe_hidden" name="soghe_hidden">
+	                  						<input type="hidden" id="tongtien_hidden" name="tongtien_hidden">
 	                  						<button name="submitForm" value="payForm" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Thanh Toán</button>
 	                  					</div>
                     				</form>
@@ -214,19 +215,20 @@
 		            selectedSofaIds.push(sofaId); // Thêm ID ghế vào danh sách
 
 		             // Xử lý: bỏ chữ G và trừ vị trí ghế đi 1
-		            const position = parseInt(sofaId.replace('G', ''), 10) - 1;
-		            processedSofaIds.push(position); // Lưu vị trí đã xử lý 
+		            /* const position = parseInt(sofaId.replace('G', ''), 10) - 1;
+		            processedSofaIds.push(position); // Lưu vị trí đã xử lý  */
 		        });
 
 		        // Cập nhật nội dung hiển thị
 		        soluongghe.textContent = selectedSofaIds.length + " ghế"; // Số lượng ghế
 		        soghe.textContent = selectedSofaIds.join(', '); // Danh sách ghế
 		        sotien = selectedSofaIds.length * <%= tuyenDuong.get_gia_ve() %>;
-		        tongtien.textContent = sotien + " VND"; // Tổng tiền
+		        tongtien.textContent = sotien + ".000 VND"; // Tổng tiền
 
 		        // Cập nhật giá trị cho các trường hidden input
 		        document.getElementById('soluongghe_hidden').value = selectedSofaIds.length; // Số lượng ghế
-		        document.getElementById('soghe_hidden').value = processedSofaIds.join(', '); // Danh sách ghế đã xử lý
+		        document.getElementById('soghe_hidden').value = selectedSofaIds.join(', '); // Danh sách ghế đã xử lý
+		        document.getElementById('tongtien_hidden').value = sotien;
 		    }
 
 
