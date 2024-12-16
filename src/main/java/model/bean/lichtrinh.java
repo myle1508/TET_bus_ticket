@@ -82,4 +82,7 @@ public class lichtrinh {
 		String time = localDateTime.format(timeFormatter);
 		return time;
 	}
+	public void thulich() {
+		System.out.print("lll");
+	}
 }
