@@ -1,0 +1,23 @@
+.col-md-4 {
+    position: relative; /* Đặt cha của khung gợi ý là tương đối */
+}
+.autocomplete-suggestion {
+	width: 97%; /* Khung gợi ý rộng bằng ô input */
+    box-sizing: border-box; /* Đảm bảo border không làm thay đổi kích thước */
+    position: absolute; /* Căn chỉnh vị trí */
+    background-color: white; /* Màu nền khung gợi ý */
+    border: 1px solid #ccc; /* Đường viền gợi ý */
+    max-height: 200px; /* Chiều cao tối đa, thêm scroll nếu cần */
+    overflow-y: auto; /* Kích hoạt cuộn dọc nếu danh sách dài */
+    z-index: 1000; /* Hiển thị trên các phần tử khác */
+    padding: 8px; /* Khoảng cách bên trong mỗi gợi ý */
+    cursor: pointer; /* Con trỏ chuột khi hover */
+}
+.autocomplete-suggestion:hover {
+    background-color: #f0f0f0; /* Hiệu ứng hover */
+}
+.team-item img {
+    width: 100%;  /* Đảm bảo ảnh sẽ kéo dài toàn bộ chiều rộng */
+    height: 250px;  /* Chiều cao cố định cho ảnh */
+    object-fit: cover;  /* Giữ tỷ lệ ảnh, cắt bớt nếu cần để không bị biến dạng */
+}
