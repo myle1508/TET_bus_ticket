@@ -84,5 +84,6 @@ public class lichtrinh {
 	}
 	public void thulich() {
 		System.out.print("lll");
+		System.out.println("sfe");
 	}
 }
