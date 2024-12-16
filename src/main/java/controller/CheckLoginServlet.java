@@ -47,10 +47,6 @@ public class CheckLoginServlet extends HttpServlet {
             	session.setAttribute("ma_nguoi_dung", user.get_ten_dang_nhap());
             	
             	if (session.getAttribute("ve") != null ) {
-            		ve ve = (ve) session.getAttribute("ve");
-            		System.out.println(ve.get_so_ghe());
-            		System.out.println(ve.get_vi_tri_ghe());
-            		System.out.println("Day nay");
             		destination = "/thanhtoan.jsp";
             	}else {
             		destination = "/main_user.jsp";
@@ -62,8 +58,8 @@ public class CheckLoginServlet extends HttpServlet {
                 destination = "/login.jsp";
             }
             
-//            RequestDispatcher rd = getServletContext().getRequestDispatcher(destination);
-//            rd.forward(request, response);
+            RequestDispatcher rd = getServletContext().getRequestDispatcher(destination);
+            rd.forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Đã có lỗi xảy ra.");
