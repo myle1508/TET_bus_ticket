@@ -127,7 +127,7 @@
             <label for="diem_xuat_phat">Điểm xuất phát:</label>
             <select id="diem_xuat_phat" name="diem_xuat_phat" required>
                 <option value="" style="color:#ccc;">Chọn điểm xuất phát</option>
-                <option value="Da Nang">Đà Nẵng</option>
+                <option value="Đà Nẵng">Đà Nẵng</option>
 				<option value="Quang Nam">Quảng Nam</option>
 				<option value="Hue">Huế</option>
 				<option value="Quang Tri">Quảng Trị</option>

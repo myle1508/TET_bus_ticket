@@ -83,7 +83,7 @@ public class ve_DAO {
 
     // Lấy vé với mã vé
     public ve get_ve_By_ma_ve(int id) {
-    	ve ve = null;
+    	ve ve = new ve();
         Connection cnn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -96,6 +96,7 @@ public class ve_DAO {
             rs = ps.executeQuery();
 
             if (rs.next()) {
+            	
             	ve.set_ma_ve(rs.getInt(1));
             	ve.set_ma_nguoi_dung(rs.getInt(2));
             	ve.set_ma_lich_trinh(rs.getInt(3));

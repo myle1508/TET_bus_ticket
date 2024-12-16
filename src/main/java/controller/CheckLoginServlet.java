@@ -23,18 +23,17 @@ public class CheckLoginServlet extends HttpServlet {
         nguoidung_BO nguoidung_BO = new nguoidung_BO();
         
         try {
-        	int role = nguoidung_BO.isValidUser(username, password);
-        	
-        	
+        	int role = nguoidung_BO.isValidUser(username, password);      	
         	nguoidung user = nguoidung_BO.getUserByUsernameAndPassword(username, password);
         	HttpSession session = request.getSession();
-            session.setAttribute("maNguoiDung", user.get_ma_nguoi_dung()); // Lưu mã người dùng vào session
-            session.setAttribute("username", user.get_ten_dang_nhap());
+            //session.setAttribute("maNguoiDung", user.get_ma_nguoi_dung()); // Lưu mã người dùng vào session
+            
         	if ( role == 1 ) {
                 request.getSession().setAttribute("username", username);
+                session.setAttribute("username", user.get_ten_dang_nhap());
                 destination = "/dashboard.jsp";
             }else if(role == 2){
-            	
+            	session.setAttribute("username", user.get_ten_dang_nhap());
             	request.getSession().setAttribute("username", username);
                 destination = "/main_user.jsp";
             }          
