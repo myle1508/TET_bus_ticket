@@ -120,6 +120,9 @@ public class ve_DAO {
         ArrayList<ve> veList = new ArrayList<>(); 
         Connection cnn = null;
         PreparedStatement ps = null;
+        
+        
+        
         ResultSet rs = null;
 
         try {
