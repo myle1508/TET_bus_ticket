@@ -25,7 +25,7 @@
               <div class="collapse navbar-collapse" id="navbarCollapse">
                   <div class="navbar-nav ms-auto">
                       <a href="index.jsp" class="nav-item nav-link active">Trang chủ</a>
-                      <a href="guest_servlet?diem-di=Quang+Nam&actionSearch=searchForm" class="nav-item nav-link">Tìm lịch trình</a>
+                      <a href="guest_servlet?action2=1" class="nav-item nav-link">Tuyến Xe</a>
                       <% 
                       String username = (String) session.getAttribute("username");
                       if (username != null){
