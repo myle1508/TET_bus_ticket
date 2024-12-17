@@ -44,7 +44,7 @@ public class CheckLoginServlet extends HttpServlet {
                     	 destination = "/confirmbooking.jsp";
                     } else {
                         // Nếu không có "ve" trong session, chuyển hướng tới trang người dùng chính
-                        destination = "/main_user.jsp";
+                        destination = "/index.jsp";
                     }
                 } else {
                     // Nếu không phải role 1 hoặc 2
