@@ -2,8 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ page import="model.bean.tuyenduong" %>
 <%@ page import="model.bean.lichtrinh" %>
+<%@ page import="model.bean.nguoidung" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.sql.Timestamp" %>
+<% nguoidung user = (nguoidung) request.getAttribute("user"); %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -230,7 +232,7 @@
 		        document.getElementById('soghe_hidden').value = selectedSofaIds.join(', '); // Danh sách ghế đã xử lý
 		        document.getElementById('tongtien_hidden').value = sotien;
 		    }
-
+		    
 
 		});
 

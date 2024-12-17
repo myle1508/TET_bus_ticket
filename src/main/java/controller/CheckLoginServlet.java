@@ -6,7 +6,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 import model.bean.nguoidung;
-import model.bean.ve;
 import model.bo.nguoidung_BO;
 
 @WebServlet("/CheckLoginServlet")
@@ -24,36 +23,36 @@ public class CheckLoginServlet extends HttpServlet {
         nguoidung_BO nguoidung_BO = new nguoidung_BO();
         
         try {
-        	int role = nguoidung_BO.isValidUser(username, password);      	
-        	nguoidung user = nguoidung_BO.getUserByUsernameAndPassword(username, password);
-        	
-        	/*
-        	 * Ở đây sẽ có hai trường hợp cho sesstion 
-        	 * Trường hợp Một là session đã được tạo trong phần của guest khi đã chọn tuyến và bấm thanh toán.Khi bấm thanh toán nó sẽ chuyển về login và ở đây session sẽ lấy session đã được
-        	 * 			tạo ở function xử lý thanh toán (payForm trong guest_servlet). session đó đã lấy bằng câu lệnh request.getSession(false)
-        	 *  Trường hợp Hai là session chưa từng được tạo trước đây thì nó sẽ tạo một session mới bằng câu lệnh request.getSession(true
-        	 *  Để logic này hoạt động hiệu quả thì ở phần logout của mỗi người phải có câu lệnh để xoá session làm việc hiện tại bằng cách session.invalidate();
-        	 */
-        	HttpSession session = (request.getSession(false) == null) ? request.getSession(true) : request.getSession(false);
-        	
-            //session.setAttribute("maNguoiDung", user.get_ma_nguoi_dung()); // Lưu mã người dùng vào session
+            int role = nguoidung_BO.isValidUser(username, password);
+            nguoidung user = nguoidung_BO.getUserByUsernameAndPassword(username, password);
             
-        	if ( role == 1 ) {
+            HttpSession session = (request.getSession(false) == null) ? request.getSession(true) : request.getSession(false);
+            
+            if (user != null) {
                 session.setAttribute("username", username);
-                session.setAttribute("username", user.get_ten_dang_nhap());
-                destination = "/dashboard.jsp";
-            }else if(role == 2){
-            	session.setAttribute("username", user.get_ten_dang_nhap());
-            	session.setAttribute("ma_nguoi_dung", user.get_ten_dang_nhap());
-            	
-            	if (session.getAttribute("ve") != null ) {
-            		destination = "/thanhtoan.jsp";
-            	}else {
-            		destination = "/main_user.jsp";
-            	}
-            	
-            }          
-            else {
+                session.setAttribute("user", user); // Lưu thông tin người dùng vào session
+                
+                if (role == 1) {
+                    // User with role 1: Admin
+                    destination = "/dashboard.jsp";
+                } else if (role == 2) {
+                    // User with role 2: Regular user
+                    session.setAttribute("ma_nguoi_dung", user.get_ma_nguoi_dung());
+                    
+                    if (session.getAttribute("ve") != null) {
+                        // Nếu session có "ve", chuyển hướng tới trang xác nhận đặt vé
+                    	 destination = "/confirmbooking.jsp";
+                    } else {
+                        // Nếu không có "ve" trong session, chuyển hướng tới trang người dùng chính
+                        destination = "/main_user.jsp";
+                    }
+                } else {
+                    // Nếu không phải role 1 hoặc 2
+                    request.setAttribute("errorMessage", "Tên đăng nhập hoặc mật khẩu không đúng.");
+                    destination = "/login.jsp";
+                }
+            } else {
+                // User not found in database
                 request.setAttribute("errorMessage", "Tên đăng nhập hoặc mật khẩu không đúng.");
                 destination = "/login.jsp";
             }

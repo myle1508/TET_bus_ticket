@@ -119,7 +119,7 @@
     session.setAttribute("sove", "3");
     
 %>
-<a href="account?action=confirmBooking" class="btn btn-success">Xác nhận thông tin</a>
+<a href="confirmbooking.jsp" class="btn btn-success">Xác nhận thông tin</a>
     </ul>
 </body>
 </html>

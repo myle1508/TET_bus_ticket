@@ -11,7 +11,7 @@ public class TicketStatistics_DAO{
 
     private Connection getConnection() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        return DriverManager.getConnection("jdbc:mysql://localhost:3307/btap", "root", "");
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/btap", "root", "");
     }
 
     private ResultSet executeQuery(String query, String... params) throws SQLException, ClassNotFoundException {

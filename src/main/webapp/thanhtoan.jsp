@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="model.bean.nguoidung" %>
+<%@ page import="model.bean.*" %>
    
 <!DOCTYPE html>
 <html lang="en">
@@ -148,7 +148,11 @@
                 </div>
              <% 
                     String username = (String) session.getAttribute("username");
-             nguoidung users = (nguoidung) request.getAttribute("user");
+               ve ve = (ve) session.getAttribute("ve");
+             
+             lichtrinh lichtrinh = (lichtrinh) session.getAttribute("lichTrinh");
+             tuyenduong tuyenduong = (tuyenduong) session.getAttribute("tuyenduong");
+             
                    
                 %>
                 <nav>
@@ -185,7 +189,7 @@
                 <div class="info-header">Tổng tiền và phương thức thanh toán</div>
 
                 <div class="info-section">
-                    <p><i class="fas fa-dollar-sign text-success"></i> <strong><%= session.getAttribute("tongGiaTien") %></strong> </p>
+                    <p><i class="fas fa-dollar-sign text-success"></i> <strong><%= ve.get_tong_tien() %></strong> </p>
                 </div>
 
                 <div class="info-section">
@@ -203,10 +207,10 @@
 			%>
 			
 			<form method="post" action="account?action=Booking">
-			    <input type="hidden" name="lichtrinhId" value="<%= session.getAttribute("lichtrinhId") %>">
-			    <input type="hidden" name="soVe" value="<%= session.getAttribute("sove") %>">
-			    <input type="hidden" name="tong_tien" value="<%= session.getAttribute("tongGiaTien") %>">
-			    <input type="hidden" id="thanh_toan_hidden" name="thanh_toan" value="<%= thanhToanValue %>">
+			    <input type="hidden" name="lichtrinhId" value="<%= lichtrinh.get_ma_lich_trinh() %>">
+			    <input type="hidden" name="soVe" value="<%= ve.get_so_ghe() %>">
+			    <input type="hidden" name="tong_tien" value="<%= ve.get_tong_tien()%>">
+			    <input type="hidden" id="thanh_toan_hidden" name="thanh_toan_hidden" value="<%= thanhToanValue %>">
 			    <input type="hidden" name="ngay_dat_hang" value="<%= currentTime %>">
 			
 			    <select class="form-select mb-3" id="paymentSelect">
@@ -229,6 +233,7 @@
     // When the select dropdown changes, update the hidden input's value
     document.getElementById('paymentSelect').addEventListener('change', function() {
         document.getElementById('thanh_toan_hidden').value = this.value;
+        
     });
 </script>
             </div>
@@ -245,13 +250,13 @@
                 <div class="info-header">Thông tin người đặt vé và vé xe</div>
 
                 <div class="info-section">
-                    <p><i class="fas fa-bus text-warning"></i> <strong>Ngày đi:</strong> <%= session.getAttribute("ngayDi") %></p>
-                    <p><i class="fas fa-calendar-alt text-info"></i> <strong>Điểm đi:</strong> <%= session.getAttribute("diemDi") %></p>
-                    <p><i class="fas fa-map-marker-alt text-danger"></i> <strong>Điểm đến:</strong> <%= session.getAttribute("diemDen") %></p>
+                    <p><i class="fas fa-bus text-warning"></i> <strong>Ngày đi:</strong> <%= lichtrinh.get_ngay_xuat_phat() %></p>
+                    <p><i class="fas fa-calendar-alt text-info"></i> <strong>Điểm đi:</strong> <%= tuyenduong.get_diem_xuat_phat() %></p>
+                    <p><i class="fas fa-map-marker-alt text-danger"></i> <strong>Điểm đến:</strong> <%= tuyenduong.get_diem_ket_thuc() %></p>
                 </div>
 
                 <div class="info-section">
-                    <p><i class="fas fa-chair text-success"></i> <strong>Số ghế:</strong> <%= session.getAttribute("sove") %></p>
+                    <p><i class="fas fa-chair text-success"></i> <strong>Số ghế:</strong> <%= ve.get_so_ghe() %></p>
                 </div>
 
                 <% 

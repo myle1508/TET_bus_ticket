@@ -14,7 +14,7 @@ import model.bean.ve;
 public class ve_DAO {
 	private Connection getConnection() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        return DriverManager.getConnection("jdbc:mysql://localhost:3307/btap", "root", "");
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/btap", "root", "");
     }
 	
 	// Lấy danh sách tất cả các vé
@@ -59,7 +59,7 @@ public class ve_DAO {
 
         try {
             cnn = getConnection();
-            String sql = "INSERT INTO ve (ma_nguoi_dung, ma_lich_trinh, so_ghe, trang_thai, vi_tri_ghe, tong_tien, thanh_toan, ngay_dat_hang) VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO ve (ma_nguoi_dung, ma_lich_trinh, so_ghe, trang_thai, vi_tri_ghe, tong_tien, thanh_toan, ngay_dat_hang) VALUES (?, ?, ?, ?, ?, ?,?,?)";
             ps = cnn.prepareStatement(sql);
             ps.setInt(1, ve.get_ma_nguoi_dung());
             ps.setInt(2, ve.get_ma_lich_trinh());
@@ -68,7 +68,7 @@ public class ve_DAO {
             ps.setString(5, ve.get_vi_tri_ghe());
             ps.setInt(6, ve.get_tong_tien());
             ps.setString(7, ve.get_thanh_toan());
-            ps.setDate(8,(Date) ve.get_ngay_dat_hang());
+            ps.setDate(8, new Date(System.currentTimeMillis()));
 
             int rows = ps.executeUpdate();
             isInserted = rows > 0;
@@ -150,7 +150,7 @@ public class ve_DAO {
     }
 
     
-    // Lấy vé với mã lịch trình -> Xem tất cả các vé có cùng lịch trình
+
     public ArrayList<ve> get_ve_By_ma_lich_trinh(int id) {
         ArrayList<ve> veList = new ArrayList<>(); // Danh sách vé trả về
         Connection cnn = null;

@@ -88,13 +88,13 @@ public class guest_servlet extends HttpServlet{
  				int tongtien = Integer.parseInt(request.getParameter("tongtien_hidden"));
  				ve ve = new ve();
  				ve.set_so_ghe(soluongghe); ve.set_vi_tri_ghe(vitrighe); ve.set_tong_tien(tongtien);
- 				
+ 				tuyenduong tuyenduong = tuyenduongBO.get_tuyen_duong_By_ma_tuyen_duong(lichTrinh.get_ma_tuyen_duong());
  				HttpSession session = prepareSession(request);
  				
  				// Cập nhật dữ liệu vào session
  		        session.setAttribute("ve", ve);
  		        session.setAttribute("lichTrinh", lichTrinh);
-
+ 		       session.setAttribute("tuyenduong", tuyenduong);
  		        // Kiểm tra nếu session mới được tạo (người dùng chưa đăng nhập)
  		        if (session.isNew() || session.getAttribute("ma_nguoi_dung") == null) {
  		            response.sendRedirect("login.jsp");
@@ -103,7 +103,7 @@ public class guest_servlet extends HttpServlet{
  		        
  		        // Trường hợp người dùng đã đăng nhập, tiếp tục xử lý logic khác
  		        // Ví dụ: Chuyển sang trang thanh toán
- 		        response.sendRedirect("thanhtoan.jsp");
+ 		        response.sendRedirect("confirmbooking.jsp");
  		        
  				
  			}

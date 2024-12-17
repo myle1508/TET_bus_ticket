@@ -198,9 +198,10 @@
 			%>
 			<div class="info-card mb-3">
 			    <h5 class="info-header">Mã Vé: <%= v.get_ma_ve() %></h5>
-			    <p><strong>Mã Lịch Trình:</strong> <%= v.get_ma_lich_trinh() %></p>
+			    <p><strong>Ngày xuất phát:</strong> <%= v.get_ngay_dat_hang() %></p>
 			    <p><strong>Số Ghế:</strong> <%= v.get_so_ghe() %></p>
 			    <p><strong>Trạng Thái:</strong> <%= v.get_trang_thai() ? "Đang diễn ra" : "Đã hoàn thành" %></p>
+			    <p> <a href="admin?action=detail_ve&ma_ve=<%=v.get_ma_ve() %>" class="button">Chi tiết</a></p>
 			</div>
 			<%
         }

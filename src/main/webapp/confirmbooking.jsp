@@ -1,8 +1,14 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page import="model.bean.nguoidung" %>
+<%@ page import="model.bean.*" %>
 <%
-    nguoidung user = (nguoidung) request.getAttribute("user");
-session.setAttribute("user", user);
+String username = (String) session.getAttribute("username");
+if (username == null) {
+    response.sendRedirect("login.jsp");
+    return;
+}
+nguoidung user = (nguoidung) session.getAttribute("user");
+
+
 %>
 
 
@@ -140,11 +146,9 @@ session.setAttribute("user", user);
                     </div>
                     <a href="contact.jsp" class="nav-item nav-link">Liên hệ</a>
                 </div>
-                <% 
-                    String username = (String) session.getAttribute("username");
-                %>
+               
                 <nav>
-                    <% if (username != null) { %>
+                   
                         <!-- Nếu đã đăng nhập, hiển thị hình người dùng và menu thả xuống -->
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
@@ -160,10 +164,7 @@ session.setAttribute("user", user);
                                 <a href="logout.jsp" class="dropdown-item">Đăng xuất</a>
                             </div>
                         </div>
-                    <% } else { %>
-                        <!-- Nếu chưa đăng nhập, hiển thị nút Đăng nhập -->
-                        <a href="login.jsp" class="btn btn-primary px-3 d-none d-lg-flex">Đăng nhập</a>
-                    <% } %>
+                   
                 </nav>
             </div>
         </nav>
@@ -199,26 +200,30 @@ session.setAttribute("user", user);
                 <!-- Tạm tính -->
                 <div class="info-card mb-4">
                     <h5 class="info-header">Tạm tính</h5>
-                    <%
-                        String giaTienStr = (String) session.getAttribute("giaTien"); 
-                        String soVeStr = (String) session.getAttribute("sove");    
-                        int giaTien = Integer.parseInt(giaTienStr.replace(".", "").replace("đ", ""));
-                        int soVe = Integer.parseInt(soVeStr);
-                        int tongTien = giaTien * soVe;
-                        session.setAttribute("tongGiaTien", tongTien);
+                    
+                    <% 
+                    ve ve = (ve) session.getAttribute("ve");
+          
+                    lichtrinh lichtrinh = (lichtrinh) session.getAttribute("lichTrinh");
+                    tuyenduong tuyenduong = (tuyenduong) session.getAttribute("tuyenduong");
+                    
+                                   
                     %>
                     <p style="font-size: 1.5rem; font-weight: bold; text-align: center; color: #333;">
-                        <%= String.format("%,d", tongTien) %>đ
+                        <%= String.format("%,d", ve.get_tong_tien()) %>
                     </p>
                 </div>
 
                 <div class="info-card">
                     <h5 class="info-header">Thông tin chuyến đi</h5>
                     <div>
-                        <p><strong>Ngày đi:</strong> <%= session.getAttribute("ngayDi") %></p>
+                    
+                        <p><strong>Ngày đi:</strong> <%=lichtrinh.get_ngay_xuat_phat() %></p>
+                         <p><strong>Giờ đi:</strong> <%=lichtrinh.get_gio_xuat_phat() %></p>
                         <hr>
-                        <p><strong>Điểm đi:</strong>  <%= session.getAttribute("diemDi") %></p>
-                        <p><strong>Điểm đến:</strong> <%= session.getAttribute("diemDen") %></p>
+                        <p><strong>Điểm đi:</strong>  <%= tuyenduong.get_diem_xuat_phat() %></p>
+                        <p><strong>Điểm đến:</strong> <%= tuyenduong.get_diem_ket_thuc() %></p>
+                           <p><strong>Số ghế:</strong> <%=ve.get_so_ghe() %></p>
                     </div>
                 </div>
             </div>
