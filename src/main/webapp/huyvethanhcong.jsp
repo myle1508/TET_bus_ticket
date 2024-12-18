@@ -187,7 +187,7 @@
             <div class="info-card mb-3 center-button">
                 <h5 class="info-header">Thông báo</h5>
                 <p>Vé của bạn đã được hủy thành công.</p>
-                <a href="main_user.jsp" class="btn btn-primary btn-lg btn-block">Trở lại trang chủ</a>
+                <a href="index.jsp" class="btn btn-primary btn-lg btn-block">Trở lại trang chủ</a>
             </div>
         </div>
     </div>

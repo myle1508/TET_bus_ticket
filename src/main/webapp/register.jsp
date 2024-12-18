@@ -138,15 +138,18 @@
         var errorField = document.getElementById("id-error1");
         var mat_khau = document.getElementById("mat_khau").value;
         var password = document.getElementById("password").value;
-
+        var submitButton = document.querySelector("button[type='submit']");
         if (mat_khau !== password) {
             errorField.textContent = "Mật khẩu không giống.";
+            submitButton.disabled = true;
         } else {
             errorField.textContent = "";
+            submitButton.disabled = false;
         }
     }
 
     function validateEmail() {
+    	var submitButton = document.querySelector("button[type='submit']");
         var emailField = document.getElementById("email");
         var errorField = document.getElementById("email-error");
         var email = emailField.value;
@@ -154,12 +157,15 @@
 
         if (!emailRegex.test(email)) {
             errorField.textContent = "Email không hợp lệ.";
+            submitButton.disabled = true;
         } else {
             errorField.textContent = "";
+            submitButton.disabled = false;
         }
     }
 
     function validatePhoneNumber() {
+    	var submitButton = document.querySelector("button[type='submit']");
         var phoneField = document.getElementById("so_dien_thoai");
         var errorField = document.getElementById("phone-error");
         var phone = phoneField.value;
@@ -167,8 +173,10 @@
 
         if (!phoneRegex.test(phone)) {
             errorField.textContent = "Số điện thoại không hợp lệ.";
+            submitButton.disabled = true;
         } else {
             errorField.textContent = "";
+            submitButton.disabled = false;
         }
     }
     </script>

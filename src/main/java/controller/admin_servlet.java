@@ -211,9 +211,9 @@ public class admin_servlet extends HttpServlet {
 	
 	private void handleInsert(HttpServletRequest request, HttpServletResponse response, lichtrinh_BO lichtrinh_BO) throws ServletException, IOException {
 		if ("post".equalsIgnoreCase(request.getMethod())) {
-	        String danh_sach_ghe = request.getParameter("danh_sach_ghe");
 	        int ma_tuyen_duong = Integer.parseInt(request.getParameter("ma_tuyen_duong")); 
-	        int so_ghe_trong  = Integer.parseInt(request.getParameter("so_ghe_trong"));
+	        int so_ghe_trong = Integer.parseInt(request.getParameter("so_ghe_trong"));
+	        String danh_sach_ghe = "0".repeat(so_ghe_trong);
 	        Timestamp thoi_gian_xuat_phat = null;
 	        String thoiGianStr = request.getParameter("thoi_gian_xuat_phat");
 	        if (thoiGianStr != null) {
@@ -288,7 +288,8 @@ public class admin_servlet extends HttpServlet {
         request.getRequestDispatcher("/List_nguoi_dung.jsp").forward(request, response);
     }
 	private void handleView(HttpServletRequest request, HttpServletResponse response, nguoidung_BO nguoidung_BO) throws ServletException, IOException {
-	    String ten_dang_nhap = request.getParameter("ten_dang_nhap");	    
+	    String ten_dang_nhap = request.getParameter("ten_dang_nhap");	
+	    if(ten_dang_nhap == null) ten_dang_nhap = request.getParameter("username");
 		nguoidung nguoidung = nguoidung_BO.get_nguoi_dung_By_ten_dang_nhap(ten_dang_nhap);
         request.setAttribute("nguoidung", nguoidung);
         request.getRequestDispatcher("/Trang_ca_nhan.jsp").forward(request, response);
@@ -368,10 +369,22 @@ public class admin_servlet extends HttpServlet {
             String matuyenduongStr = request.getParameter("ma_tuyen_duong");
             int matuyenduong = Integer.parseInt(matuyenduongStr);
             
-            String danhSachGhe = request.getParameter("danh_sach_ghe");
             
-            String soGheTrongStr = request.getParameter("so_ghe_trong");
-            int soGheTrong = Integer.parseInt(soGheTrongStr); 
+            String danhSachGhe = request.getParameter("danh_sach_ghe");            
+            int soGheTrong = Integer.parseInt(request.getParameter("so_ghe_trong"));
+            int soGheTrongcu = Integer.parseInt(request.getParameter("so_ghe_trong_cu"));
+            
+            int tongghe = danhSachGhe.length();
+
+            if (tongghe < soGheTrong) {
+                int soLuongBoSung = soGheTrong - tongghe;
+                StringBuilder builder = new StringBuilder(danhSachGhe);
+                for (int i = 0; i < soLuongBoSung; i++) {
+                    builder.append("0");
+                }
+                danhSachGhe = builder.toString();
+            }
+            soGheTrong = soGheTrong - tongghe + soGheTrongcu;
             
             Timestamp thoi_gian_xuat_phat = null;
 	        String thoiGianStr = request.getParameter("thoi_gian_xuat_phat");
