@@ -13,6 +13,7 @@ public class ve {
 	private  String thanh_toan;
 	private  Date ngay_dat_hang;
 	
+	
 	public int get_ma_ve()
 	{
 		return ma_ve;
@@ -55,6 +56,7 @@ public class ve {
 	{
 		this.ma_ve = ma_ve;
 	}
+	
 	public void set_ma_nguoi_dung(int ma_nguoi_dung) 
 	{
 		this.ma_nguoi_dung = ma_nguoi_dung;

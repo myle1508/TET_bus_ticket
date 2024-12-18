@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+   <%@ page import="model.bean.*  ,java.util.List"%> 
 <!-- Spinner Start -->
       <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
           <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
@@ -43,7 +43,30 @@
                       </div>
                       <a href="contact.jsp" class="nav-item nav-link">Liên hệ</a>
                   </div>
-                  <a href="login.jsp" class="btn btn-primary px-3 d-none d-lg-flex">Đăng nhập</a>
+                 <% 
+                    String username = (String) session.getAttribute("username");
+              	nguoidung nguoidung = (nguoidung)  session.getAttribute("user");
+             
+                   
+                %>
+                <nav>
+                    <% if (username != null) { %>
+                        <!-- Nếu đã đăng nhập, hiển thị hình người dùng và menu thả xuống -->
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                <img src="img/user.png" alt="User" class="img-fluid" style="width: 30px; height: 30px; border-radius: 50%;">
+                            </a>
+                            <div class="dropdown-menu rounded-0 m-0">
+                                <a href="thongtin_nguoidung.jsp" class="dropdown-item">Thông tin tài khoản</a>
+                               <a href="account?action=listve" class="dropdown-item">Đơn hàng của tôi</a>
+                                <a href="logout.jsp" class="dropdown-item">Đăng xuất</a>
+                            </div>
+                        </div>
+                    <% } else { %>
+                        <!-- Nếu chưa đăng nhập, hiển thị nút Đăng nhập -->
+                        <a href="login.jsp" class="btn btn-primary px-3 d-none d-lg-flex">Đăng nhập</a>
+                    <% } %>
+                </nav>
               </div>
           </nav>
       </div>

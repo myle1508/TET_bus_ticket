@@ -10,7 +10,7 @@
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f9;
-            margin: 0;jo
+            margin: 0;
             padding: 0;
         }
 
@@ -107,10 +107,7 @@
                     <th>Mã lịch trình</th>
                     <th>Mã người dùng</th>
                     <th>Số ghế</th>
-                    <th>Vị trí ghế</th>
                     <th>Trạng thái</th>
-                    <th>Tổng tiền</th>                    
-                    <th>Thanh toán</th>
                     <th>Chi tiết</th>
                 </tr>
             </thead>
@@ -121,10 +118,7 @@
                     <td><%= ve.get_ma_lich_trinh() %></td>
                     <td><%= ve.get_ma_nguoi_dung() %></td>
                     <td><%= ve.get_so_ghe() %></td>
-                    <td><%= ve.get_vi_tri_ghe()%></td>
                     <td><%= ve.get_trang_thai()? "Hoạt động" : "Hết hạn" %></td>
-                    <td><%= ve.get_tong_tien()%></td>
-                    <td><%= ve.get_thanh_toan()%></td>
                     <td>
                         <a href="admin?action=detail_ve&ma_ve=<%= ve.get_ma_ve() %>" class="button">xxx</a>
                     </td>

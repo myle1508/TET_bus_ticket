@@ -164,11 +164,7 @@
                             </a>
                             <div class="dropdown-menu rounded-0 m-0">
                                 <a href="thongtin_nguoidung.jsp" class="dropdown-item">Thông tin tài khoản</a>
-                                <a href="thanhvien.jsp" class="dropdown-item">Thành viên Thường</a>
-                                <a href="donhang.jsp" class="dropdown-item">Đơn hàng của tôi</a>
-                                <a href="uudai.jsp" class="dropdown-item">Ưu đãi</a>
-                                <a href="quanlythe.jsp" class="dropdown-item">Quản lý thẻ</a>
-                                <a href="chuyendi.jsp" class="dropdown-item">Nhận xét chuyến đi</a>
+                                  <a href="account?action=listve" class="dropdown-item">Đơn hàng của tôi</a>
                                 <a href="logout.jsp" class="dropdown-item">Đăng xuất</a>
                             </div>
                         </div>
@@ -189,7 +185,13 @@
                 <div class="info-header">Tổng tiền và phương thức thanh toán</div>
 
                 <div class="info-section">
-                    <p><i class="fas fa-dollar-sign text-success"></i> <strong><%= ve.get_tong_tien() %></strong> </p>
+                  <p>
+    <i class=""></i> 
+    <strong><%= String.format("%,d", ve.get_tong_tien()) %>.000 VNĐ</strong>
+</p>
+
+                   
+                    
                 </div>
 
                 <div class="info-section">

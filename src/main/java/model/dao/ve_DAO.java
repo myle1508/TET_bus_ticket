@@ -120,9 +120,6 @@ public class ve_DAO {
         ArrayList<ve> veList = new ArrayList<>(); 
         Connection cnn = null;
         PreparedStatement ps = null;
-        
-        
-        
         ResultSet rs = null;
 
         try {
@@ -197,21 +194,36 @@ public class ve_DAO {
 
         try {
             cnn = getConnection();
+            if (cnn == null) {
+                throw new Exception("Không thể kết nối đến cơ sở dữ liệu.");
+            }
+
             String sql = "UPDATE ve SET trang_thai = ? WHERE ma_ve = ?";
             ps = cnn.prepareStatement(sql);
             ps.setBoolean(1, updatedve.get_trang_thai());
-            ps.setInt(2, updatedve.get_ma_ve());          
+            ps.setInt(2, updatedve.get_ma_ve());
 
-            isUpdated = ps.executeUpdate() > 0;
+            
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected > 0) {
+                isUpdated = true;
+                System.out.println("Cập nhật vé thành công cho Mã vé: " + updatedve.get_ma_ve());
+            } else {
+                System.out.println("Không có vé nào được cập nhật. Mã vé: " + updatedve.get_ma_ve());
+            }
+        } catch (SQLException e) {
+            System.out.println("SQLException trong updateve: " + e.getMessage());
+            e.printStackTrace();
         } catch (Exception e) {
-            System.out.println("Error in updateve: " + e.getMessage());
+            System.out.println("Error trong updateve: " + e.getMessage());
+            e.printStackTrace();
         } finally {
             closeResources(ps, cnn);
         }
 
         return isUpdated;
     }
-    
+
     // Xóa luôn vé nè   
     public boolean deleteve(int id) {
         boolean isDeleted = false;

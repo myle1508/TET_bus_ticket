@@ -77,6 +77,7 @@
     .btn {
         border-radius: 25px;
         transition: all 0.3s ease;
+        width: 100%; /* Đảm bảo nút đầy rộng trong container */
     }
 
     .btn:hover {
@@ -101,6 +102,11 @@
     .action-btns .btn:hover {
         transform: translateY(-3px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Căn giữa nút */
+    .center-button {
+        text-align: center;
     }
 
     .footer {
@@ -176,69 +182,16 @@
 
    <div class="container mt-5">
     <!-- Tabs Section -->
-    <ul class="nav nav-tabs" id="orderTabs" role="tablist">
-        <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="current-tab" data-bs-toggle="tab" data-bs-target="#current" type="button" role="tab">Lịch sử đặt vé </button>
-        </li>
-       
-    </ul>
-<div class="tab-content p-4" id="orderTabsContent">
-    <%
-        List<Map<String, Object>> veList = (List<Map<String, Object>>) request.getAttribute("veList");
-        if (veList != null && !veList.isEmpty()) {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-
-            for (Map<String, Object> item : veList) {
-                ve v = (ve) item.get("ve");
-                lichtrinh lt = (lichtrinh) item.get("lichtrinh");
-                boolean choHuy = (boolean) item.get("choHuy");
-                boolean daHoanThanh = (boolean) item.get("daHoanThanh");
-
-                Date ngayDatHang = v.get_ngay_dat_hang();
-                if (ngayDatHang != null) {
-    %>
-    <div class="info-card mb-3">
-        <h5 class="info-header">Mã Vé: <%= v.get_ma_ve() %></h5>
-        <p><strong>Ngày đặt hàng:</strong> <%= dateFormat.format(ngayDatHang) %></p>
-        <p><strong>Ngày khởi hành:</strong> <%= dateFormat.format(lt.get_thoi_gian_xuat_phat()) %></p>
-        <p><strong>Số ghế:</strong> <%= v.get_so_ghe() %></p>
-        <p><strong>Trạng thái vé:</strong> <%= v.get_trang_thai() ? "Còn hiệu lực" : "Đã hủy" %></p>
-        <p><strong>Trạng thái chuyến đi:</strong> 
-            <% 
-                if (daHoanThanh) {
-                    out.print("Đã hoàn thành");
-                } else if (choHuy) {
-                    out.print("Có thể hủy");
-                } else {
-                    out.print("Không thể hủy");
-                }
-            %>
-        </p>
-        <% if (choHuy && v.get_trang_thai()) { %> <!-- Corrected condition -->
-            <p><a href="account?action=huyve&ma_ve=<%= v.get_ma_ve() %>" class="button">Hủy</a></p>
-        <% } %>
-        <p><a href="admin?action=detail_ve&ma_ve=<%= v.get_ma_ve() %>" class="button">Chi tiết</a></p>
+    <div class="row main-container">
+        <div class="col-12 text-center">
+            <div class="info-card mb-3 center-button">
+                <h5 class="info-header">Thông báo</h5>
+                <p>Vé của bạn đã được hủy thành công.</p>
+                <a href="main_user.jsp" class="btn btn-primary btn-lg btn-block">Trở lại trang chủ</a>
+            </div>
+        </div>
     </div>
-    <%
-                } else {
-    %>
-    <p><strong>Ngày đặt hàng:</strong> Không xác định</p>
-    <%
-                }
-            }
-        } else {
-    %>
-    <p>Bạn chưa có vé nào.</p>
-    <%
-        }
-    %>
 </div>
-
-
-
-</div>
-   
-
     <!-- Footer Start -->
     <div class="footer">
         <p class="m-0">&copy; 2024 NLN. Tất cả các quyền được bảo lưu.</p>

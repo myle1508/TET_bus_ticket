@@ -160,12 +160,8 @@
                             </a>
                             <div class="dropdown-menu rounded-0 m-0">
                                 <a href="thongtin_nguoidung.jsp" class="dropdown-item">Thông tin tài khoản</a>
-                                <a href="thanhvien.jsp" class="dropdown-item">Thành viên Thường</a>
-                                <a href="donhang.jsp" class="dropdown-item">Đơn hàng của tôi</a>
-                                <a href="uudai.jsp" class="dropdown-item">Ưu đãi</a>
-                                <a href="quanlythe.jsp" class="dropdown-item">Quản lý thẻ</a>
-                                <a href="chuyendi.jsp" class="dropdown-item">Nhận xét chuyến đi</a>
-                                <a href="logout.jsp" class="dropdown-item">Đăng xuất</a>
+                               <a href="account?action=listve" class="dropdown-item">Đơn hàng của tôi</a>
+                               <a href="logout.jsp" class="dropdown-item">Đăng xuất</a>
                             </div>
                         </div>
                     <% } else { %>
@@ -203,9 +199,7 @@
     </div>
     <!-- Footer End -->
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
-
+    
     <!-- Javascript Libraries -->
     <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="lib/easing/easing.min.js"></script>
