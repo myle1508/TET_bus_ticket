@@ -1,4 +1,4 @@
-o<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="model.bean.*"%>
 <%@ page session="true" %>
 <!DOCTYPE html>
@@ -10,7 +10,7 @@ o<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="U
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color:  #d0f2e7;
+            background-color:  #f2f2f2;
             margin: 0;
             padding: 0;
             color: #333;
@@ -30,11 +30,13 @@ o<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="U
             padding: 30px;
             background-color: #fff;
             border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid #4caf50; /* Thêm viền xanh lá */
+   			box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Tăng bóng đổ */
             transition: all 0.3s ease;
         }
         .container:hover {
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            background-color: #e8f5e9; /* Đổi màu nền khi hover */
+    		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
         .detail {
             margin-bottom: 25px;
@@ -58,17 +60,19 @@ o<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="U
         .edit-link {
             padding: 12px 35px;
             text-decoration: none;
-            background-color: #ff7f50;
-            color: white;
+            background-color: #007bff; /* Xanh biển */
+		    color: #fff;
             border-radius: 10px;
             transition: background-color 0.3s ease;
             font-size: 17px;
             display: inline-block;
             text-align: center;
+            background: linear-gradient(45deg, #4caf50, #2196f3);
         }
-        .edit-link:hover {
-            background-color: #e07b3c;
-        }
+
+		.edit-link:hover {
+		    background-color: #0056b3; /* Xanh biển đậm khi hover */
+		}
         .footer {
             text-align: center;
             margin-top: 40px;
@@ -76,13 +80,13 @@ o<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="U
             color: #777;
         }
         .footer a {
-            color: #4caf50;
+            color: #ff0000;
             text-decoration: none;
             font-weight: bold;
             transition: color 0.3s ease;
         }
         .footer a:hover {
-            color: #388e3c;
+            color: #cc0000;
         }
     </style>
 </head>
@@ -97,6 +101,9 @@ o<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="U
         %>
             <div class="detail">
                 <label>Tên đăng nhập:</label> <span><%= nguoidung.get_ten_dang_nhap()%></span>
+            </div>
+            <div class="detail">
+                <label>Họ và tên:</label> <span><%= nguoidung.get_ho_ten()%></span>
             </div>
             <div class="detail">
                 <label>Email:</label> <span><%= nguoidung.get_email()%></span>

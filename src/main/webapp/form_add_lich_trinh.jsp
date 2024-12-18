@@ -30,7 +30,7 @@
             color: white;
             text-align: center;
             padding: 5px;
-            width: 100%;
+            width: 99%;
             position: absolute;
             top: 0;
             left: 0;
@@ -42,8 +42,8 @@
         .container {
 		    display: flex;
 		    flex-direction: column; /* Đảm bảo các phần tử trong container xếp theo cột */
-		    width: 60%;
-		    max-width: 600px;
+		    width: 50%;
+		    max-width: 500px;
 		    margin-top: 200px;
 		    background-color: #fff;
 		    padding: 20px;

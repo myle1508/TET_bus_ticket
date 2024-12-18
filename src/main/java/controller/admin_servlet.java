@@ -315,6 +315,8 @@ public class admin_servlet extends HttpServlet {
     private void handleSelect(HttpServletRequest request, HttpServletResponse response, lichtrinh_BO lichtrinh_BO) throws ServletException, IOException {
     	ArrayList<lichtrinh> List_lich_trinh = lichtrinh_BO.getList();
         request.setAttribute("List_lich_trinh", List_lich_trinh);
+        ArrayList<tuyenduong> List_tuyen_duong = tuyenduong_BO.getList();
+        request.setAttribute("List_tuyen_duong", List_tuyen_duong);
         request.getRequestDispatcher("/List_lich_trinh.jsp").forward(request, response);
     }
     private void handleUpdate(HttpServletRequest request, HttpServletResponse response, tuyenduong_BO tuyenduong_BO) throws ServletException, IOException {
@@ -493,7 +495,7 @@ public class admin_servlet extends HttpServlet {
 
             if (isUpdated) {
             	request.setAttribute("errorMessage", "Cập nhật người dùng thành công!");
-                forwardToErrorPage(request, response);
+            	handleView(request, response, nguoidung_BO);
             } else {
                 request.setAttribute("errorMessage", "Cập nhật người dùng thất bại!");
                 forwardToErrorPage(request, response);

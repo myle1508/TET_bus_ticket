@@ -127,7 +127,7 @@
                     <th>Điểm xuất phát</th>
                     <th>Điểm kết thúc</th>
                     <th>Khoảng cách (km)</th>
-                    <th>Giá vé (K VNĐ)</th>
+                    <th>Giá vé (VNĐ)</th>
                     <th>Hành động</th>
                 </tr>
             </thead>
@@ -138,10 +138,9 @@
                     <td><%= td.get_diem_xuat_phat()%></td>
                     <td><%= td.get_diem_ket_thuc()%></td>
                     <td><%= td.get_khoang_cach()%></td>
-                    <td><%= td.get_gia_ve()%></td>
+                    <td><%= td.get_gia_ve() + ".000"%></td>
                     <td>
-                        <a href="admin?action=update_tuyen_duong&ma_tuyen_duong=<%= td.get_ma_tuyen_duong() %>" class="button">Sửa</a>
-                        <a href="admin?action=delete_tuyen_duong&ma_tuyen_duong=<%= td.get_ma_tuyen_duong() %>" class="button">Xóa</a>
+                        <a href="admin?action=update_tuyen_duong&ma_tuyen_duong=<%= td.get_ma_tuyen_duong() %>" class="button">Cập nhật</a>
                     </td>
                 </tr>
                 <% } %>

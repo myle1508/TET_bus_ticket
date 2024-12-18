@@ -30,7 +30,7 @@
             color: white;
             text-align: center;
             padding: 5px;
-            width: 100%;
+            width: 99%;
             position: absolute;
             top: 0;
             left: 0;

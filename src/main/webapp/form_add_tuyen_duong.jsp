@@ -132,7 +132,7 @@
         <form action="admin?action=insert_tuyen_duong" method="post">
         
             <label for="diem_xuat_phat">Điểm xuất phát:</label>
-            <select id="diem_xuat_phat" name="diem_xuat_phat" required>
+            <select id="diem_xuat_phat" name="diem_xuat_phat" onchange="checkroute()" required>
                 <option value="" style="color:#ccc;">Chọn điểm xuất phát</option>
                 <option value="Ha Noi">Hà Nội</option>
 				<option value="Ho Chi Minh City">Hồ Chí Minh</option>

@@ -52,7 +52,15 @@
         td {
             background-color: #f9f9f9;
         }
+		.status-active {
+            color: green;
+            font-weight: bold;
+        }
 
+        .status-inactive {
+            color: red;
+            font-weight: bold;
+        }
         .button {
             padding: 10px 20px;
             background-color: #FF5722;
@@ -119,7 +127,9 @@
                     <td><%= ve.get_ma_ve() %></td>                    
                     <td><%= ve.get_vi_tri_ghe()%></td>
                     <td><%= ve.get_so_ghe() %></td>
-                    <td><%= ve.get_trang_thai()? "Hoạt động" : "Hết hạn" %></td>
+                    <td class="<%= ve.get_trang_thai() ? "status-active" : "status-inactive" %>">
+				        <%= ve.get_trang_thai() ? "Hoạt động" : "Dừng" %>
+				    </td>
                     <td><%= ve.get_tong_tien()%></td>
                     <td><%= ve.get_thanh_toan()%></td>
                     <td><%= ve.get_ngay_dat_hang()%></td>

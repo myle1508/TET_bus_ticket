@@ -51,7 +51,7 @@
         .detail-group label {
             font-weight: bold;
             color: #333;
-            width: 30%;
+            width: 40%;
         }
 
         .detail-group .value {
@@ -117,8 +117,8 @@
         </div>
 
         <div class="detail-group">
-            <label>Trạng thái:</label>
-            <div class="value"><%= lichtrinh.get_trang_thai() ? "Hoạt động" : "Hết hạn" %></div>
+            <label>Trạng thái lịch trình:</label>
+            <div class="value"><%= lichtrinh.get_trang_thai() ? "Hoạt động" : "Dừng" %></div>
         </div>
 
         <div class="section-title">Thông tin tuyến đường</div>
@@ -167,6 +167,10 @@
         <div class="detail-group">
             <label>Phương thức thanh toán:</label>
             <div class="value"><%= ve.get_thanh_toan() %></div>
+        </div>
+        <div class="detail-group">
+            <label>Trạng thái vé:</label>
+            <div class="value"><%= ve.get_trang_thai() ? "Hoạt động" : "Dừng"%></div>
         </div>
 
         <a href="javascript:window.history.back()" class="btn-back">Quay lại</a>

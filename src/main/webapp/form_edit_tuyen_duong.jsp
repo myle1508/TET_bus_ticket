@@ -104,7 +104,7 @@
             <label for="khoang_cach">Khoảng cách (km):</label>
             <input type="number" id="khoang_cach" name="khoang_cach" value="<%= td.get_khoang_cach()%>" required min="0">
 
-            <label for="gia_ve">Giá vé (VND):</label>
+            <label for="gia_ve">Giá vé ( K VND):</label>
             <input type="number" id="gia_ve" name="gia_ve" value="<%= td.get_gia_ve()%>" required min="0">
 			<div id="id-error" style="color: red;"></div>
             <button type="submit" class="button">Cập nhật Tuyến Đường</button>
