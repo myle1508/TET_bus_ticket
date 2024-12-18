@@ -13,7 +13,7 @@ import model.bean.tuyenduong;
 public class tuyenduong_DAO {
 	private Connection getConnection() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/btap", "root", "");
+        return DriverManager.getConnection("jdbc:mysql://localhost:3307/btap", "root", "");
     }
 	
 	// Lấy danh sách các tuyến đường

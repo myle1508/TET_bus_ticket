@@ -134,11 +134,8 @@
 		
 		    <label for="thoi_gian_xuat_phat">Thời gian xuất phát:</label>
 		    <input type="datetime-local" id="thoi_gian_xuat_phat" name="thoi_gian_xuat_phat" required>
-		
-		    <label for="danh_sach_ghe">Danh sách ghế:</label>
-		    <input type="text" id="danh_sach_ghe" name="danh_sach_ghe" required>
-		
-		    <label for="so_ghe_trong">Số ghế trống:</label>
+			  	
+		    <label for="so_ghe_trong">Số ghế:</label>
 		    <input type="number" id="so_ghe_trong" name="so_ghe_trong" required min="1">
 		
 		    <label for="trang_thai">Trạng thái: <input type="checkbox" id="trang_thai" name="trang_thai"> Đang hoạt động </input> </label>	<br>	    

@@ -89,6 +89,33 @@
         }
     </style>
     <script>
+ // Danh sách các tỉnh Việt Nam
+    const provinces = [
+        "An Giang", "Bà Rịa - Vũng Tàu", "Bạc Liêu", "Bắc Giang", "Bắc Kạn", "Bắc Ninh",
+        "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước", "Bình Thuận", "Cà Mau",
+        "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai",
+        "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", "Hải Dương",
+        "Hải Phòng", "Hậu Giang", "Hòa Bình", "Hưng Yên", "Khánh Hòa", "Kiên Giang",
+        "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định",
+        "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình",
+        "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sơn La",
+        "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa", "Thừa Thiên Huế", "Tiền Giang",
+        "TP. Hồ Chí Minh", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái"
+    ];
+
+    // Hàm khởi tạo danh sách tỉnh
+    function populateProvinces(selectId) {
+        const select = document.getElementById(selectId);
+        provinces.forEach(province => {
+            const option = document.createElement("option");
+            option.value = province;
+            option.textContent = province;
+            select.appendChild(option);
+        });
+    }
+    populateProvinces("diem_xuat_phat");
+    populateProvinces("diem_ket_thuc");
+
     function checkroute(){
         var diem_xuat_phat = document.getElementById("diem_xuat_phat").value;
         var diem_ket_thuc = document.getElementById("diem_ket_thuc").value;
@@ -134,38 +161,14 @@
             <label for="diem_xuat_phat">Điểm xuất phát:</label>
             <select id="diem_xuat_phat" name="diem_xuat_phat" required>
                 <option value="" style="color:#ccc;">Chọn điểm xuất phát</option>
-                <option value="Đà Nẵng">Đà Nẵng</option>
-				<option value="Quang Nam">Quảng Nam</option>
-				<option value="Hue">Huế</option>
-				<option value="Quang Tri">Quảng Trị</option>
-				<option value="Quang Binh">Quảng Bình</option>
-				<option value="Binh Dinh">Bình Định</option>
-				<option value="Phu Yen">Phú Yên</option>
-				<option value="Khanh Hoa">Khánh Hòa</option>
-				<option value="Ninh Thuan">Ninh Thuận</option>
-				<option value="Binh Thuan">Bình Thuận</option>
-				<option value="Gia Lai">Gia Lai</option>
-				<option value="Kon Tum">Kon Tum</option>
-				<!-- Thêm các tỉnh khác nếu cần -->
+
 
             </select>
 
             <label for="diem_ket_thuc">Điểm kết thúc:</label>
             <select id="diem_ket_thuc" name="diem_ket_thuc" onchange="checkroute()" required>
                 <option value="" style="color:#ccc;">Chọn điểm kết thúc</option>
-                <option value="Da Nang">Đà Nẵng</option>
-				<option value="Quang Nam">Quảng Nam</option>
-				<option value="Hue">Huế</option>
-				<option value="Quang Tri">Quảng Trị</option>
-				<option value="Quang Binh">Quảng Bình</option>
-				<option value="Binh Dinh">Bình Định</option>
-				<option value="Phu Yen">Phú Yên</option>
-				<option value="Khanh Hoa">Khánh Hòa</option>
-				<option value="Ninh Thuan">Ninh Thuận</option>
-				<option value="Binh Thuan">Bình Thuận</option>
-				<option value="Gia Lai">Gia Lai</option>
-				<option value="Kon Tum">Kon Tum</option>
-				<!-- Thêm các tỉnh khác nếu cần -->
+
                 
             </select>
 

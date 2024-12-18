@@ -51,7 +51,7 @@
         .detail-group label {
             font-weight: bold;
             color: #333;
-            width: 30%;
+            width: 40%;
         }
 
         .detail-group .value {
@@ -141,6 +141,31 @@
         <div class="detail-group">
             <label>Giá vé:</label>
             <div class="value"><%= tuyenduong.get_gia_ve() %>.000 VND</div>
+        </div>
+        
+        <div class="section-title">Thông tin vé</div>
+
+        <div class="detail-group">
+            <label>Ngày đặt vé:</label>
+            <div class="value"><%= ve.get_ngay_dat_hang()%></div>
+        </div>
+
+        <div class="detail-group">
+            <label>Số ghế:</label>
+            <div class="value"><%= ve.get_so_ghe()%></div>
+        </div>
+        <div class="detail-group">
+            <label>Vị trí ghế:</label>
+            <div class="value"><%= ve.get_vi_tri_ghe()%></div>
+        </div>
+        <div class="detail-group">
+            <label>Tổng tiền:</label>
+            <div class="value"><%= ve.get_tong_tien()%>.000 VND</div>
+        </div>
+
+        <div class="detail-group">
+            <label>Phương thức thanh toán:</label>
+            <div class="value"><%= ve.get_thanh_toan()%></div>
         </div>
 
         <a href="javascript:window.history.back()" class="btn-back">Quay lại</a>
