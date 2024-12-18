@@ -12,7 +12,7 @@ public class lichtrinh_DAO {
         return DriverManager.getConnection("jdbc:mysql://localhost:3307/btap", "root", "");
     }
 
-	// Lấy danh sách tất cả lịch trình
+	
     public ArrayList<lichtrinh> getList() {
         ArrayList<lichtrinh> result = new ArrayList<>();
         Connection cnn = null;

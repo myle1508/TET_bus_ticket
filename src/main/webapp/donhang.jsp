@@ -114,65 +114,14 @@
 
 </head>
 <body>
-    <!-- Navbar Start -->
-    <div class="container-fluid nav-bar bg-transparent">
-        <nav class="navbar navbar-expand-lg bg-white navbar-light py-0 px-4">
-            <a href="index.jsp" class="navbar-brand d-flex align-items-center text-center">
-                <div class="icon p-2 me-2">
-                    <img class="img-fluid" src="img/1.png" alt="Icon" style="width: 30px; height: 30px;">
-                </div>
-                <h1 class="m-0 text-primary">N_L_N</h1>
-            </a>
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto">
-                    <a href="index.jsp" class="nav-item nav-link active">Trang chủ</a>
-                    <a href="about.jsp" class="nav-item nav-link">Nhóm tôi</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Property</a>
-                        <div class="dropdown-menu rounded-0 m-0">
-                            <a href="property-list.jsp" class="dropdown-item">Property List</a>
-                            <a href="property-type.jsp" class="dropdown-item">Property Type</a>
-                            <a href="property-agent.jsp" class="dropdown-item">Property Agent</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu rounded-0 m-0">
-                            <a href="testimonial.jsp" class="dropdown-item">Testimonial</a>
-                            <a href="404.jsp" class="dropdown-item">404</a>
-                        </div>
-                    </div>
-                    <a href="contact.jsp" class="nav-item nav-link">Liên hệ</a>
-                </div>
+    <%@ include file="navbarGuest.jsp" %>
+  
              <% 
-                    String username = (String) session.getAttribute("username");
+                 
              nguoidung users = (nguoidung) request.getAttribute("user");
                    
                 %>
-                <nav>
-                    <% if (username != null) { %>
-                        <!-- Nếu đã đăng nhập, hiển thị hình người dùng và menu thả xuống -->
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                                <img src="img/user.png" alt="User" class="img-fluid" style="width: 30px; height: 30px; border-radius: 50%;">
-                            </a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                                <a href="thongtin_nguoidung.jsp" class="dropdown-item">Thông tin tài khoản</a>
-                               <a href="account?action=listve" class="dropdown-item">Đơn hàng của tôi</a>
-                                <a href="logout.jsp" class="dropdown-item">Đăng xuất</a>
-                            </div>
-                        </div>
-                    <% } else { %>
-                        <!-- Nếu chưa đăng nhập, hiển thị nút Đăng nhập -->
-                        <a href="login.jsp" class="btn btn-primary px-3 d-none d-lg-flex">Đăng nhập</a>
-                    <% } %>
-                </nav>
-            </div>
-        </nav>
-    </div>
+             
 
    <div class="container mt-5">
     <!-- Tabs Section -->
@@ -202,20 +151,23 @@
         <p><strong>Ngày đặt hàng:</strong> <%= dateFormat.format(ngayDatHang) %></p>
         <p><strong>Ngày khởi hành:</strong> <%= dateFormat.format(lt.get_thoi_gian_xuat_phat()) %></p>
         <p><strong>Số ghế:</strong> <%= v.get_so_ghe() %></p>
-        <p><strong>Trạng thái vé:</strong> <%= v.get_trang_thai() ? "Còn hiệu lực" : "Đã hủy" %></p>
-        <p><strong>Trạng thái chuyến đi:</strong> 
-            <% 
-                if (daHoanThanh) {
-                    out.print("Đã hoàn thành");
-                } else if (choHuy) {
-                    out.print("Có thể hủy");
-                } else {
-                    out.print("Không thể hủy");
-                }
-            %>
-        </p>
+     <p><strong>Trạng thái vé:</strong> 
+    <%
+        if (!v.get_trang_thai()) { 
+            out.print("Đã hủy");
+        } else if (daHoanThanh) { 
+            out.print("Hết hiệu lực");
+        } else { 
+            out.print("Còn hiệu lực");
+        }
+    %>
+</p>
+
+        
+      
         <% if (choHuy && v.get_trang_thai()) { %> <!-- Corrected condition -->
-            <p><a href="account?action=huyve&ma_ve=<%= v.get_ma_ve() %>" class="button">Hủy</a></p>
+     <p><a href="account?action=huyve&ma_ve=<%= v.get_ma_ve() %>" onclick="return confirm('Bạn có chắc muốn hủy vé này không?');" class="button">Hủy</a></p>
+
         <% } %>
         <p><a href="admin?action=detail_ve&ma_ve=<%= v.get_ma_ve() %>" class="button">Chi tiết</a></p>
     </div>
@@ -234,6 +186,11 @@
     %>
 </div>
 
+<script type="text/javascript">
+    function confirmAction(message) {
+        return confirm(message);
+    }
+</script>
 
 
 </div>
