@@ -114,8 +114,12 @@
 </head>
 <body>
     
-    <%@ include file="navbarGuest.jsp" %>
-
+	<%@include file="navbarGuest.jsp" %>
+             <% 
+                    
+             nguoidung users = (nguoidung) request.getAttribute("user");
+            
+                %>
    <div class="container mt-5">
     <!-- Tabs Section -->
     <ul class="nav nav-tabs" id="orderTabs" role="tablist">
@@ -151,6 +155,7 @@
     }
 %>
 
+</div>
 </div>
    
 
