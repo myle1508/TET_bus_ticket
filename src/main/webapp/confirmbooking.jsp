@@ -1,12 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="model.bean.*" %>
+
 <%
 
 
 nguoidung user = (nguoidung) session.getAttribute("user");
-
-
 %>
+
 
 
 <!DOCTYPE html>
@@ -110,9 +110,18 @@ nguoidung user = (nguoidung) session.getAttribute("user");
     </style>
 </head>
 <body>
+<<<<<<< HEAD
      <%@ include file="navbarGuest.jsp" %>
 
     </div>
+=======
+
+	<%@include file="navbarGuest.jsp" %>
+	<%
+	nguoidung user = (nguoidung) session.getAttribute("user");
+	%>
+	
+>>>>>>> e0b9769125ff13e27301ee87676c7820a4431458
     <div class="container main-container">
         <div class="row justify-content-center">
             <!-- Cột bên trái: Thông tin người dùng -->
@@ -154,9 +163,13 @@ nguoidung user = (nguoidung) session.getAttribute("user");
                                    
                     %>
                     <p style="font-size: 1.5rem; font-weight: bold; text-align: center; color: #333;">
+<<<<<<< HEAD
                  
                         <%= String.format("%,d",ve.get_tong_tien()) %>.000đ
                         
+=======
+                        <%= String.format("%,d", ve.get_tong_tien()) %>.000VND
+>>>>>>> e0b9769125ff13e27301ee87676c7820a4431458
                     </p>
                 </div>
 

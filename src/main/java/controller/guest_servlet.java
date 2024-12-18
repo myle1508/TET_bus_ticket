@@ -72,6 +72,16 @@ public class guest_servlet extends HttpServlet{
  			request.setAttribute("tuyenDuong", tuyenDuong);
  			this.forwardToDestination("/detailSchedulesGuest.jsp", request, response);
  		}
+ 		else if (request.getParameter("action2") != null) {
+ 			ArrayList<tuyenduong> tuyenDuongList = tuyenduongBO.getList();
+ 			request.setAttribute("tuyenDuongList", tuyenDuongList);
+ 			this.forwardToDestination("/tuyenDuongGuest.jsp", request, response);
+ 		}
+ 		else if (request.getParameter("logout") != null) {
+ 			HttpSession session = request.getSession(false);
+ 			session.invalidate();
+ 			response.sendRedirect("login.jsp");
+ 		}
  	}
  	
  	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
