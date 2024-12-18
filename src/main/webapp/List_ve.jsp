@@ -103,28 +103,22 @@
         <table>
             <thead>
                 <tr>
-
-                    <th>Mã vé</th>                   
-                    <th>Vị trí ghế</th>
-                    <th>Số lượng ghế</th>
+                    <th>Mã vé</th>
+                    <th>Mã lịch trình</th>
+                    <th>Mã người dùng</th>
+                    <th>Số ghế</th>
                     <th>Trạng thái</th>
-                    <th>Tổng tiền</th>                    
-                    <th>Thanh toán</th>
-                    <th>Ngày đặt hàng</th>
                     <th>Chi tiết</th>
                 </tr>
             </thead>
             <tbody>
                 <% for (ve ve : ves) { %>
                 <tr>
-
-                    <td><%= ve.get_ma_ve() %></td>                    
-                    <td><%= ve.get_vi_tri_ghe()%></td>
+                    <td><%= ve.get_ma_ve() %></td>
+                    <td><%= ve.get_ma_lich_trinh() %></td>
+                    <td><%= ve.get_ma_nguoi_dung() %></td>
                     <td><%= ve.get_so_ghe() %></td>
                     <td><%= ve.get_trang_thai()? "Hoạt động" : "Hết hạn" %></td>
-                    <td><%= ve.get_tong_tien()%></td>
-                    <td><%= ve.get_thanh_toan()%></td>
-                    <td><%= ve.get_ngay_dat_hang()%></td>
                     <td>
                         <a href="admin?action=detail_ve&ma_ve=<%= ve.get_ma_ve() %>" class="button">xxx</a>
                     </td>

@@ -123,11 +123,11 @@
 			    </select>        
             <label for="thoi_gian_xuat_phat">Thời gian xuất phát:</label>
             <input type="datetime-local" id="thoi_gian_xuat_phat" name="thoi_gian_xuat_phat" value="<%= lt.get_thoi_gian_xuat_phat().toString()%>" required>
-        	
-        	
-            <input type="hidden" id="danh_sach_ghe" name="danh_sach_ghe" value="<%= lt.get_danh_sach_ghe() %>" >
-        	<input type="hidden" id="so_ghe_trong_cu" name="so_ghe_trong_cu" value="<%= lt.get_so_ghe_trong() %>">
-            <label for="so_ghe_trong">Tổng số ghế</label>
+        
+            <label for="danh_sach_ghe">Danh sách ghế:</label>
+            <input type="text" id="danh_sach_ghe" name="danh_sach_ghe" value="<%= lt.get_danh_sach_ghe() %>" required>
+        
+            <label for="so_ghe_trong">Số ghế trống:</label>
             <input type="number" id="so_ghe_trong" name="so_ghe_trong" value="<%= lt.get_so_ghe_trong() %>" required min="1">
         
             <label for="trang_thai">Trạng thái: <input type="checkbox" id="trang_thai" name="trang_thai" <% if (lt.get_trang_thai()) { %>checked<% } %> > Đang hoạt động </label><br>

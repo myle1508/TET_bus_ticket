@@ -103,7 +103,10 @@
 						                    <div class="sofa <%= trangThai == '1' ? "sold" : "" %>">
 						                        G<%= gheIndex %>
 						                    </div>
-						                    <% }} %>
+						                    <% } else { %>
+						                    <!-- Ghế trống nếu chuỗi danh sách không đủ ghế -->
+						                    <div class="sofa"></div>
+						                    <% } } %>
 						                </div>
 						                <% } } else { %>
 						                <p class="text-center text-danger">Danh sách ghế không có dữ liệu.</p>

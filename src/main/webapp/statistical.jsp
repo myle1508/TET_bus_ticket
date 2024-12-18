@@ -178,7 +178,7 @@
             data: {
                 labels: [<%= dates.toString() %>],
                 datasets: [{
-                    label: 'Doanh Thu (K VNĐ)',
+                    label: 'Doanh Thu (VNĐ)',
                     data: [<%= revenues.toString() %>],
                     borderColor: '#3498db',
                     borderWidth: 3,

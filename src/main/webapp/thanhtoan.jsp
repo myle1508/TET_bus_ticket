@@ -113,7 +113,6 @@
 
 </head>
 <body>
-
     <!-- Navbar Start -->
     <div class="container-fluid nav-bar bg-transparent">
         <nav class="navbar navbar-expand-lg bg-white navbar-light py-0 px-4">
@@ -178,25 +177,14 @@
         </nav>
     </div>
 
-
-<%@ include file="navbarGuest.jsp" %>
 <div class="container main-container">
     <div class="row">
         <!-- Cột bên trái -->
-        <div class="col-lg-6 col-md-12 mb-4 mx-auto">
+        <div class="col-lg-6 col-md-12 mb-4">
             <div class="info-card bg-white">
                 <div class="info-header">Tổng tiền và phương thức thanh toán</div>
-	             <% 
-	                    
-	               ve ve = (ve) session.getAttribute("ve");
-	             
-	             lichtrinh lichtrinh = (lichtrinh) session.getAttribute("lichTrinh");
-	             tuyenduong tuyenduong = (tuyenduong) session.getAttribute("tuyenduong");
-	             
-	                   
-	                %>
+
                 <div class="info-section">
-<<<<<<< HEAD
                   <p>
     <i class=""></i> 
     <strong><%= String.format("%,d", ve.get_tong_tien()) %>.000 VNĐ</strong>
@@ -204,9 +192,6 @@
 
                    
                     
-=======
-                    <p><i class="fas fa-dollar-sign text-success"></i> <strong><%= ve.get_tong_tien() %>.000VND</strong> </p>
->>>>>>> e0b9769125ff13e27301ee87676c7820a4431458
                 </div>
 
                 <div class="info-section">
@@ -244,7 +229,7 @@
 			</form>
 
 </div>
-</div>
+
 
 <script>
     // When the select dropdown changes, update the hidden input's value
@@ -262,7 +247,7 @@
         
         
     </div>
-     <div class="col-lg-6 col-md-12 mx-auto">
+     <div class="col-lg-6 col-md-12">
             <div class="info-card bg-white">
                 <div class="info-header">Thông tin người đặt vé và vé xe</div>
 
@@ -295,6 +280,21 @@
 </div>
 
 
-    <%@ include file ="scriptsIncludeGuest.jsp"%>
+    <!-- Footer Start -->
+    <div class="footer">
+        <p class="m-0">&copy; 2024 NLN. Tất cả các quyền được bảo lưu.</p>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    <!-- Javascript Libraries -->
+    <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
 </body>
 </html> 

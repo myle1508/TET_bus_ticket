@@ -211,11 +211,9 @@ public class admin_servlet extends HttpServlet {
 	
 	private void handleInsert(HttpServletRequest request, HttpServletResponse response, lichtrinh_BO lichtrinh_BO) throws ServletException, IOException {
 		if ("post".equalsIgnoreCase(request.getMethod())) {
-	       
+	        String danh_sach_ghe = request.getParameter("danh_sach_ghe");
 	        int ma_tuyen_duong = Integer.parseInt(request.getParameter("ma_tuyen_duong")); 
-	        int so_ghe_trong = Integer.parseInt(request.getParameter("so_ghe_trong"));
-	        String danh_sach_ghe = "0".repeat(so_ghe_trong);
-
+	        int so_ghe_trong  = Integer.parseInt(request.getParameter("so_ghe_trong"));
 	        Timestamp thoi_gian_xuat_phat = null;
 	        String thoiGianStr = request.getParameter("thoi_gian_xuat_phat");
 	        if (thoiGianStr != null) {
@@ -370,21 +368,11 @@ public class admin_servlet extends HttpServlet {
             String matuyenduongStr = request.getParameter("ma_tuyen_duong");
             int matuyenduong = Integer.parseInt(matuyenduongStr);
             
-            String danhSachGhe = request.getParameter("danh_sach_ghe");            
-            int soGheTrong = Integer.parseInt(request.getParameter("so_ghe_trong"));
-            int soGheTrongcu = Integer.parseInt(request.getParameter("so_ghe_trong_cu"));
+            String danhSachGhe = request.getParameter("danh_sach_ghe");
             
-            int tongghe = danhSachGhe.length();
-
-            if (tongghe < soGheTrong) {
-                int soLuongBoSung = soGheTrong - tongghe;
-                StringBuilder builder = new StringBuilder(danhSachGhe);
-                for (int i = 0; i < soLuongBoSung; i++) {
-                    builder.append("0");
-                }
-                danhSachGhe = builder.toString();
-            }
-            soGheTrong = soGheTrong - tongghe + soGheTrongcu; 
+            String soGheTrongStr = request.getParameter("so_ghe_trong");
+            int soGheTrong = Integer.parseInt(soGheTrongStr); 
+            
             Timestamp thoi_gian_xuat_phat = null;
 	        String thoiGianStr = request.getParameter("thoi_gian_xuat_phat");
 	        if (thoiGianStr != null) {

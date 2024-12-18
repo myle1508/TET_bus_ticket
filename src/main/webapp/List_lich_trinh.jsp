@@ -124,6 +124,7 @@
             <thead>
                 <tr>
                     <th>Mã lịch trình</th>
+                    <th>Mã tuyến đường</th>
                     <th>Thời gian xuất phát</th>
                     <th>Số ghế trống</th>
                     <th>Trạng thái</th>
@@ -134,6 +135,7 @@
                 <% for (lichtrinh lt : lichTrinhs) { %>
                 <tr>
                     <td><%= lt.get_ma_lich_trinh() %></td>
+                    <td><%= lt.get_ma_tuyen_duong() %></td>
                     <td><%= lt.get_thoi_gian_xuat_phat() %></td>
                     <td><%= lt.get_so_ghe_trong() %></td>
                     <td><%= lt.get_trang_thai() ? "Hoạt động" : "Dừng" %></td>

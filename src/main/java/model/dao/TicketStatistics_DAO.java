@@ -11,7 +11,7 @@ public class TicketStatistics_DAO{
 
     private Connection getConnection() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        return DriverManager.getConnection("jdbc:mysql://localhost:3307/btap", "root", "");
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/btap", "root", "");
     }
 
     private ResultSet executeQuery(String query, String... params) throws SQLException, ClassNotFoundException {
@@ -27,9 +27,11 @@ public class TicketStatistics_DAO{
     public Map<String, Double> getRevenueByDate(String period) throws ClassNotFoundException {
         Map<String, Double> revenueByDate = new HashMap<>();
         
-        String query = "SELECT DATE_FORMAT(v.ngay_dat_hang, ?) AS period, "
-                + "SUM(v.tong_tien) AS doanh_thu "
+        String query = "SELECT DATE_FORMAT(lt.thoi_gian_xuat_phat, ?) AS period, "
+                + "SUM(td.gia_ve) AS doanh_thu "
                 + "FROM ve v "
+                + "JOIN lichtrinh lt ON v.ma_lich_trinh = lt.ma_lich_trinh "
+                + "JOIN tuyenduong td ON lt.ma_tuyen_duong = td.ma_tuyen_duong "
                 + "GROUP BY period "
                 + "ORDER BY period";
         try (Connection conn = getConnection();
